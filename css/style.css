@@ -188,14 +188,14 @@ body {
 
 /* Estilos da Foto de Perfil */
 .foto-perfil {
-  width: 180px; /* Tamanho da foto */
-  height: 180px;
-  box-shadow: 0 0 30px rgba(79, 70, 229, 0.4),
-    inset 0 0 15px rgba(255, 255, 255, 0.1); /* Sombra e brilho interno */
+  width: 400px; /* Tamanho da foto */
+  height: 400px;
+  box-shadow: 0 0 50px rgba(79, 70, 229, 0.4),
+    inset 0 0 180px rgba(255, 255, 255, 0.1); /* Sombra e brilho interno */
   border-radius: 50%; /* Torna a imagem redonda */
   border: 5px solid var(--pastel-lightblue); /* Borda com cor pastel */
   object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
-  animation: pulse-glow 2s infinite alternate ease-in-out; /* Aplica a animação de brilho pulsante */
+  animation: pulse-glow 15s infinite alternate ease-in-out; /* Aplica a animação de brilho pulsante */
 }
 
 /* Keyframes para a animação de brilho da foto de perfil */
@@ -676,8 +676,8 @@ h1 {
     padding: 0 1rem;
   }
   .foto-perfil {
-    width: 140px;
-    height: 140px;
+    width: 400px;
+    height: 400px;
   }
 
   .sobre,
