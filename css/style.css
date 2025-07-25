@@ -1,0 +1,747 @@
+/* style.css */
+/* Importa a fonte Poppins do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Reset básico para todos os elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif; /* Aplica Poppins como fonte principal */
+}
+
+/* Comportamento de rolagem suave para âncoras */
+html {
+  scroll-behavior: smooth;
+  background: var(
+    --escuro
+  ); /* Define a cor de fundo principal para todo o documento HTML */
+}
+
+/* Definição de variáveis CSS para cores e estilos globais */
+:root {
+  --primary-color: #7b68ee; /* Tom de lavanda mais vibrante para contraste e destaque */
+  --secondary-color: #0f172a; /* Cor escura principal, usada para fundos */
+  --escuro: #0f172a; /* Fundo base para o body e html */
+  --maisEscuro: #0a0f1c; /* Tom ainda mais escuro para detalhes */
+  --claro: #e2e8f0; /* Cor de texto principal (quase branco) */
+  --vidro: rgba(255, 255, 255, 0.08); /* Fundo de vidro translúcido sutil */
+
+  /* Cores Pastéis Suaves para acentos e detalhes */
+  --pastel-lavender: #c3b1e1; /* Lavanda para acentos */
+  --pastel-lightblue: #a7d9ee; /* Azul claro para acentos */
+  --pastel-mint: #b0e0d6; /* Verde menta para acentos */
+  --pastel-rose: #f0b5b8; /* Rosé para acentos */
+}
+
+/* Estilos do corpo da página */
+body {
+  background: transparent; /* Torna o corpo transparente para que o 'website-background-effect' seja visível */
+  color: var(--claro); /* Cor de texto padrão */
+  line-height: 1.6; /* Altura de linha para melhor legibilidade */
+}
+
+/* Elemento de Fundo Animado (camada mais baixa) */
+.website-background-effect {
+  position: fixed; /* Fixa o elemento na tela, sem rolar com o conteúdo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Posiciona atrás de todo o conteúdo */
+  pointer-events: none; /* Garante que ele não interfira com cliques ou seleções */
+  background-image: radial-gradient(
+    circle,
+    var(--pastel-lavender) 1px,
+    /* Cria pequenos pontos com cor pastel */ transparent 1px
+  );
+  background-size: 25px 25px; /* Define o tamanho e espaçamento dos pontos */
+  opacity: 0.08; /* Opacidade inicial muito baixa para sutileza */
+  animation: background-fade 20s infinite alternate ease-in-out; /* Aplica a animação de "pulsação" */
+}
+
+/* Keyframes para a animação de opacidade do fundo */
+@keyframes background-fade {
+  0% {
+    opacity: 0.05;
+  } /* Opacidade inicial mais baixa */
+  50% {
+    opacity: 0.12;
+  } /* Opacidade máxima no meio da animação */
+  100% {
+    opacity: 0.05;
+  } /* Retorna à opacidade inicial */
+}
+
+/* Estilos da Barra de Navegação */
+.navegacao {
+  position: fixed; /* Mantém a navegação fixa no topo */
+  background: rgba(15, 23, 42, 0.7); /* Fundo semi-transparente */
+  width: 100%;
+  z-index: 100; /* Garante que fique acima de outros elementos */
+  top: 0;
+  padding: 1.2rem 1rem; /* Espaçamento interno */
+  backdrop-filter: blur(10px); /* Efeito de vidro (blur no que está por trás) */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
+}
+
+/* Estilos da Lista de Menu */
+.menu {
+  display: flex; /* Layout flexível para os itens do menu */
+  list-style: none; /* Remove marcadores de lista */
+  gap: 2.5rem; /* Espaçamento entre os itens do menu */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+}
+
+/* Estilos dos Links de Navegação (itens normais) */
+.menu-link {
+  text-decoration: none; /* Remove sublinhado */
+  color: var(--claro); /* Cor do texto padrão */
+  font-weight: 500;
+  position: relative; /* Para o efeito de underline animado */
+  padding: 0.5rem 0; /* Espaçamento interno */
+  display: flex; /* Layout flexível para alinhar ícone e texto */
+  align-items: center;
+  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  transition: color 0.3s ease-in-out; /* Transição suave para a cor do texto */
+}
+
+/* Estilos dos Ícones dentro dos Links de Navegação */
+.menu-link i {
+  color: var(--primary-color); /* Cor dos ícones usando a cor primária */
+  transition: color 0.3s ease-in-out; /* Transição suave para a cor do ícone */
+}
+
+/* Efeito de Underline Animado (pseudo-elemento) */
+.menu-link::after {
+  content: "";
+  height: 2px;
+  width: 0%; /* Começa com largura zero */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--pastel-lavender); /* Cor pastel para o underline */
+  transition: width 0.3s ease-in-out; /* Animação de largura */
+}
+
+/* Efeitos de Hover nos Links de Navegação */
+.menu-link:hover {
+  color: var(--primary-color); /* Altera a cor do texto no hover */
+}
+
+.menu-link:hover i {
+  color: var(--pastel-rose); /* Outra cor pastel no hover do ícone */
+}
+
+.menu-link:hover::after {
+  width: 100%; /* Underline aparece totalmente no hover */
+}
+
+/* Estilo para o Botão de Download do Currículo na Navbar (Removido do HTML, mas o estilo é mantido se reusado) */
+.btn-download-cv {
+  /* Este estilo não será aplicado, pois o elemento foi removido do HTML */
+  background: linear-gradient(
+    45deg,
+    var(--pastel-lightblue),
+    var(--pastel-mint)
+  ); /* Gradiente pastel */
+  color: var(--escuro); /* Texto escuro para contraste */
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px; /* Mais arredondado, estilo pílula */
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-left: 2.5rem; /* Destaca ele um pouco dos outros links */
+}
+
+.btn-download-cv:hover {
+  background: linear-gradient(
+    45deg,
+    var(--pastel-mint),
+    var(--pastel-lightblue)
+  ); /* Inverte o gradiente no hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-download-cv i {
+  color: var(--secondary-color); /* Cor do ícone, escuro para contraste */
+  font-size: 1rem; /* Tamanho do ícone */
+}
+
+/* Estilos da Seção de Cabeçalho (Hero Section) */
+.cabecalho {
+  min-height: 100vh; /* Ocupa a altura total da viewport */
+  display: flex; /* Layout flexível */
+  justify-content: center; /* Centraliza verticalmente o conteúdo */
+  align-items: center; /* Centraliza horizontalmente o conteúdo */
+  flex-direction: column; /* Organiza os itens em coluna */
+  text-align: center; /* Centraliza o texto */
+  padding: 8rem 1rem 2rem; /* Adiciona padding para evitar sobreposição pela navegação fixa */
+}
+
+/* Estilos da Foto de Perfil */
+.foto-perfil {
+  width: 180px; /* Tamanho da foto */
+  height: 180px;
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.4),
+    inset 0 0 15px rgba(255, 255, 255, 0.1); /* Sombra e brilho interno */
+  border-radius: 50%; /* Torna a imagem redonda */
+  border: 5px solid var(--pastel-lightblue); /* Borda com cor pastel */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  animation: pulse-glow 2s infinite alternate ease-in-out; /* Aplica a animação de brilho pulsante */
+}
+
+/* Keyframes para a animação de brilho da foto de perfil */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.4),
+      inset 0 0 15px rgba(255, 255, 255, 0.1);
+    border-color: var(--pastel-lightblue); /* Cor da borda inicial */
+  }
+  100% {
+    box-shadow: 0 0 45px rgba(79, 70, 229, 0.6),
+      inset 0 0 20px rgba(255, 255, 255, 0.2);
+    border-color: var(--pastel-mint); /* Cor da borda no pico do brilho */
+  }
+}
+
+/* Estilos do Título Principal (Nome) */
+h1 {
+  font-size: 4.5rem; /* Fonte maior */
+  color: var(--primary-color); /* Cor principal */
+  font-weight: 700; /* Mais negrito */
+  margin: 25px 0 10px; /* Margens */
+  letter-spacing: -0.05em; /* Ajuste de espaçamento entre letras para elegância */
+}
+
+/* Estilos do Subtítulo no Cabeçalho */
+.cabecalho-sub-titulo {
+  font-size: 1.8rem; /* Tamanho da fonte */
+  color: var(--pastel-lavender); /* Cor pastel para o subtítulo */
+  font-weight: 400;
+  max-width: 600px; /* Limita a largura para melhor leitura */
+
+  /* Propriedades para o efeito de cursor piscante */
+  border-right: 2px solid var(--claro); /* Cor do cursor */
+  white-space: nowrap; /* Garante que o texto não quebre linha */
+  overflow: hidden; /* Esconde o excesso de texto e a parte invisível do cursor */
+  /* A animação 'blink-caret' é aplicada aqui para o cursor */
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Keyframes para o cursor piscante */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  } /* Transparente no início e no fim */
+  50% {
+    border-color: var(--claro);
+  } /* Visível na metade da animação */
+}
+
+/* Estilos Comuns para as Seções (Sobre, Projetos, Contato) */
+.sobre,
+.projetos,
+.contato {
+  padding: 6rem 2rem; /* Espaçamento interno */
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha de camada sutil no topo */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição para uso com 'is-visible' */
+}
+
+/* Classe 'is-visible' (para ser adicionada via JS para o Scroll Reveal) */
+.sobre.is-visible,
+.projetos.is-visible,
+.contato.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos dos Títulos das Seções */
+.sobre-titulo,
+.projetos-titulo,
+.titulo-contato {
+  font-size: 3.5rem; /* Tamanho consistente para todos os títulos de seção */
+  color: var(--claro); /* Cor padrão (fallback) */
+  text-align: center;
+  margin-bottom: 3rem; /* Espaçamento abaixo do título */
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--pastel-rose)
+  ); /* Gradiente de cor no texto */
+  -webkit-background-clip: text; /* Clipa o fundo ao texto (para navegadores Webkit) */
+  -webkit-text-fill-color: transparent; /* Torna o texto transparente para mostrar o fundo */
+  background-clip: text; /* Clipa o fundo ao texto (padrão) */
+  color: transparent; /* Fallback para navegadores que não suportam */
+}
+
+/* Estilos da Caixa da Seção "Sobre Mim" (Glassmorphism) */
+.sobre-caixa {
+  padding: 2.5rem; /* Mais espaçamento interno */
+  max-width: 850px; /* Largura máxima */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  border-radius: 20px; /* Bordas mais arredondadas */
+  border: 1px solid var(--vidro); /* Borda sutil com efeito de vidro */
+  backdrop-filter: blur(15px); /* Efeito de desfoque no fundo */
+  background: rgba(255, 255, 255, 0.03); /* Fundo muito transparente */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
+}
+
+/* Estilos do Parágrafo "Sobre Mim" */
+.sobre-paragrafo {
+  text-align: center;
+  font-size: 1.15rem; /* Tamanho da fonte ajustado */
+  margin-bottom: 2.5rem; /* Espaçamento abaixo do texto */
+  color: var(--claro);
+}
+
+/* Estilos dos Ícones de Habilidades */
+.habilidades-icones {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+  justify-content: center; /* Centraliza os ícones */
+  gap: 2rem; /* Espaçamento entre os ícones */
+  margin-top: 2rem;
+}
+
+.habilidade-item {
+  display: flex;
+  flex-direction: column; /* Ícone e texto em coluna */
+  align-items: center; /* Centraliza ícone e texto */
+  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  color: var(--claro);
+  font-size: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease; /* Transição suave no hover */
+}
+
+.habilidade-item i {
+  font-size: 3.5rem; /* Tamanho dos ícones de habilidade */
+  color: var(--pastel-mint); /* Cor pastel para os ícones */
+  transition: color 0.3s ease; /* Transição suave na cor do ícone */
+}
+
+/* Efeitos de Hover nos Ícones de Habilidade */
+.habilidade-item:hover {
+  transform: translateY(-5px); /* Deslocamento para cima */
+  color: var(--primary-color); /* Altera a cor do texto */
+}
+
+.habilidade-item:hover i {
+  color: var(--primary-color); /* Altera a cor do ícone */
+}
+
+/* Estilos da Seção "Projetos" */
+.projetos-caixa {
+  display: grid; /* Layout de grade para os cards de projeto */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Colunas responsivas */
+  gap: 2rem; /* Espaçamento entre os cards */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilos dos Cards de Projeto */
+.projetos-card {
+  background: rgba(255, 255, 255, 0.03); /* Fundo mais transparente */
+  border-radius: 18px; /* Bordas arredondadas */
+  backdrop-filter: blur(8px); /* Blur de fundo */
+  border: 1px solid var(--vidro); /* Borda sutil */
+  overflow: hidden; /* Garante que o conteúdo não vaze */
+  transition: all 0.4s ease; /* Transição suave para todas as propriedades */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; /* Layout em coluna para conteúdo do card */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+}
+
+/* Efeitos de Hover nos Cards de Projeto */
+.projetos-card:hover {
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3),
+    0 0 10px var(--pastel-lightblue); /* Sombra intensa e brilho */
+  transform: translateY(-8px) scale(1.02); /* Leve deslocamento e escala */
+}
+
+/* Estilos das Imagens dos Projetos */
+.projetos-imagem {
+  width: 100%;
+  height: 220px; /* Altura fixa para uniformidade */
+  object-fit: cover; /* Preenche o espaço sem distorcer */
+  border-bottom: 1px solid var(--vidro); /* Linha sutil abaixo da imagem */
+}
+
+/* Estilos da Caixa de Textos dentro dos Cards de Projeto */
+.caixa-textos-projetos {
+  padding: 1.8rem; /* Mais espaçamento interno */
+  flex-grow: 1; /* Permite que ocupe o espaço restante verticalmente */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribui título e parágrafo */
+}
+
+/* Estilos do Título dentro do Card de Projeto */
+.info-projetos {
+  font-size: 1.8rem; /* Tamanho do título */
+  color: var(--pastel-lightblue); /* Cor pastel para o título do projeto */
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+/* Estilos do Parágrafo dentro do Card de Projeto */
+.paragrafo-projetos {
+  font-size: 1rem; /* Tamanho da fonte */
+  color: rgba(226, 232, 240, 0.85); /* Cor levemente mais clara */
+  line-height: 1.5;
+  margin-bottom: 1.5rem; /* Espaçamento abaixo */
+  text-align: center;
+}
+
+/* Estilos dos Ícones de Tecnologias Usadas no Projeto */
+.tecnologias-usadas {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem; /* Espaçamento entre os ícones */
+}
+
+.tecnologias-usadas i {
+  font-size: 1.8rem; /* Tamanho dos ícones */
+  color: var(--pastel-mint); /* Cor pastel para os ícones */
+  transition: transform 0.2s ease; /* Transição suave */
+}
+
+/* Efeito de Hover nos Ícones de Tecnologia */
+.tecnologias-usadas i:hover {
+  transform: scale(1.15); /* Aumenta um pouco no hover */
+  color: var(--primary-color); /* Altera a cor */
+}
+
+/* Estilos dos Botões dentro dos Cards de Projeto */
+.card-botoes {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar linha em mobile */
+  gap: 1rem; /* Espaçamento entre os botões */
+  justify-content: center;
+  margin-top: auto; /* Empurra os botões para a parte inferior do card flex */
+}
+
+.btn-projeto {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: var(--primary-color);
+  color: var(--claro);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1 1 auto; /* Permite que o botão ocupe espaço e cresça */
+  max-width: 180px; /* Limita largura */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-projeto:hover {
+  background: var(--pastel-lavender);
+  color: var(--escuro);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-projeto.btn-github {
+  background: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-projeto.btn-github:hover {
+  background: var(--primary-color);
+  border-color: var(--pastel-lightblue);
+  color: var(--claro);
+}
+
+/* Estilos da Seção "Contato" */
+.contato {
+  padding: 6rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha de camada sutil */
+  text-align: center;
+}
+
+.contato-descricao {
+  font-size: 1.15rem;
+  color: var(--claro);
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilos do Formulário de Contato */
+.formulario-contato {
+  max-width: 600px;
+  margin: 0 auto 3rem; /* Margem abaixo do formulário */
+  background: rgba(255, 255, 255, 0.03); /* Fundo mais transparente */
+  backdrop-filter: blur(12px); /* Blur ajustado */
+  padding: 2.5rem; /* Mais padding */
+  border: 1px solid var(--vidro);
+  border-radius: 20px; /* Mais arredondado */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espaçamento entre os grupos de formulário */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.grupo-form {
+  text-align: left;
+}
+
+.grupo-form label {
+  display: block; /* Garante que o label ocupe sua própria linha */
+  margin-bottom: 0.5rem;
+  color: var(--claro);
+  font-weight: 500;
+}
+
+/* Estilos dos Campos de Input e Textarea */
+.campo-form,
+.text-form {
+  width: 100%;
+  padding: 1rem;
+  background: var(--maisEscuro); /* Fundo dos campos um pouco mais escuro */
+  border-radius: 10px; /* Mais arredondado */
+  color: var(--claro);
+  border: 1px solid rgba(79, 70, 229, 0.3); /* Borda sutil com primary-color */
+  outline: none; /* Remove o contorno padrão ao focar */
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave no foco */
+}
+
+.text-form {
+  resize: vertical; /* Permite redimensionar apenas verticalmente */
+  min-height: 150px; /* Altura mínima maior para o textarea */
+}
+
+/* Efeitos de Foco nos Campos do Formulário */
+.campo-form:focus,
+.text-form:focus {
+  border-color: var(--primary-color); /* Altera a cor da borda no foco */
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); /* Sombra mais pronunciada no foco */
+  background: var(
+    --secondary-color
+  ); /* Fundo ligeiramente mais claro no foco */
+}
+
+/* Estilos do Botão de Envio do Formulário */
+.botao-form {
+  color: var(--claro);
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--pastel-lavender)
+  ); /* Gradiente suave */
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px; /* Mais arredondado */
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeitos de Hover no Botão de Envio */
+.botao-form:hover {
+  transform: translateY(-5px); /* Deslocamento para cima */
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35); /* Sombra mais intensa */
+  background: linear-gradient(
+    45deg,
+    var(--pastel-lavender),
+    var(--primary-color)
+  ); /* Inverte o gradiente no hover */
+}
+
+/* Estilos das Informações de Contato Adicionais */
+.contato-info {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.03); /* Linha pontilhada sutil de separação */
+}
+
+.contato-info h3 {
+  font-size: 1.8rem;
+  color: var(--pastel-lightblue);
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos dos Ícones Sociais */
+.sociais-icones {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Espaçamento entre os ícones */
+  margin-bottom: 1.5rem;
+}
+
+.sociais-icones a {
+  color: var(--claro); /* Cor padrão dos ícones */
+  font-size: 2.5rem; /* Tamanho dos ícones */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transição suave no hover */
+}
+
+/* Efeitos de Hover nos Ícones Sociais */
+.sociais-icones a:hover {
+  color: var(--primary-color);
+  transform: translateY(-5px) scale(1.1);
+}
+
+.contato-info p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Ajustes para Tablets (de 768px a 1024px) */
+@media (max-width: 1024px) {
+  .menu {
+    gap: 1.5rem; /* Reduz espaço entre itens do menu */
+    justify-content: space-around; /* Distribui melhor em tablet */
+  }
+  .btn-download-cv {
+    /* Mantido para caso queira reintroduzir ou como referência */
+    margin-left: 0; /* Remove margem lateral extra para melhor encaixe */
+  }
+  h1 {
+    font-size: 3.5rem;
+  }
+  .cabecalho-sub-titulo {
+    font-size: 1.6rem;
+  }
+  .sobre-titulo,
+  .projetos-titulo,
+  .titulo-contato {
+    font-size: 3rem;
+  }
+  .projetos-caixa {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    ); /* Min-width para cards de projeto */
+  }
+}
+
+/* Ajustes para Mobile (até 767px) */
+@media (max-width: 767px) {
+  .navegacao {
+    padding: 1rem 0.5rem;
+  }
+  .menu {
+    flex-direction: column; /* Empilha links verticalmente em mobile */
+    gap: 1rem;
+    align-items: center; /* Centraliza verticalmente os itens do menu */
+  }
+  .menu-link {
+    font-size: 0.9rem;
+    gap: 0.2rem;
+  }
+  .menu-link i {
+    font-size: 1.2rem;
+  }
+  .btn-download-cv {
+    /* Mantido para caso queira reintroduzir ou como referência */
+    width: 80%; /* Ocupa mais largura em mobile */
+    margin-left: 0;
+    margin-top: 1rem; /* Espaçamento do link acima */
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    margin: 15px 0 5px;
+  }
+  .cabecalho-sub-titulo {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+  .foto-perfil {
+    width: 140px;
+    height: 140px;
+  }
+
+  .sobre,
+  .projetos,
+  .contato {
+    padding: 4rem 1rem;
+  }
+  .sobre-titulo,
+  .projetos-titulo,
+  .titulo-contato {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .sobre-caixa {
+    padding: 1.5rem;
+  }
+  .sobre-paragrafo {
+    font-size: 1rem;
+  }
+
+  .habilidades-icones {
+    gap: 1.5rem;
+  }
+  .habilidade-item i {
+    font-size: 3rem;
+  }
+
+  .projetos-caixa {
+    grid-template-columns: 1fr; /* Apenas 1 coluna no mobile */
+  }
+  .projetos-imagem {
+    height: 180px;
+  }
+  .info-projetos {
+    font-size: 1.5rem;
+  }
+  .paragrafo-projetos {
+    font-size: 0.95rem;
+  }
+  .tecnologias-usadas {
+    gap: 0.8rem;
+  }
+  .tecnologias-usadas i {
+    font-size: 1.5rem;
+  }
+  .btn-projeto {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+  .formulario-contato {
+    padding: 1.5rem;
+  }
+  .campo-form,
+  .text-form {
+    padding: 0.8rem;
+  }
+  .botao-form {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  .contato-info h3 {
+    font-size: 1.5rem;
+  }
+  .sociais-icones a {
+    font-size: 2rem;
+  }
+}

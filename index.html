@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matheus.Dev - Desenvolvedor Front-End</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="website-background-effect"></div>
+
+    <nav class="navegacao">
+      <ul class="menu">
+        <li>
+          <a href="#inicio" class="menu-link">
+            <i class="fas fa-home"></i> Início
+          </a>
+        </li>
+
+        <li>
+          <a href="#sobre" class="menu-link">
+            <i class="fas fa-user"></i> Sobre
+          </a>
+        </li>
+
+        <li>
+          <a href="#projetos" class="menu-link">
+            <i class="fas fa-folder-open"></i> Serviços/Projetos
+          </a>
+        </li>
+
+        <li>
+          <a href="#contato" class="menu-link">
+            <i class="fas fa-envelope"></i> Contato
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+      <img
+        src="./images/profile.jpg"
+        alt="Foto de perfil de Matheus Phelipe"
+        class="foto-perfil"
+      />
+      <h1>Matheus Phelipe</h1>
+      <p class="cabecalho-sub-titulo">
+        <span id="texto-animado">Desenvolvedor Front-End</span>
+      </p>
+    </main>
+
+    <section id="sobre" class="sobre">
+      <h2 class="sobre-titulo">Sobre Mim</h2>
+      <div class="sobre-caixa">
+        <p class="sobre-paragrafo">
+          Olá! Sou o Matheus Phelipe, um desenvolvedor Front-End com paixão por
+          criar interfaces de usuário incríveis e experiências digitais
+          memoráveis. Com foco em usabilidade e design, busco transformar ideias
+          complexas em soluções elegantes e intuitivas. Sou apaixonado por
+          aprender novas tecnologias e estou sempre em busca de desafios que me
+          permitam crescer e inovar.
+        </p>
+        <div class="habilidades-icones">
+          <div class="habilidade-item">
+            <i class="fab fa-html5"></i>
+            <span>HTML5</span>
+          </div>
+          <div class="habilidade-item">
+            <i class="fab fa-css3-alt"></i>
+            <span>CSS3</span>
+          </div>
+          <div class="habilidade-item">
+            <i class="fab fa-js"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="habilidade-item">
+            <i class="fab fa-python"></i>
+            <span>Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+      <h2 class="projetos-titulo">Meus Serviços e Projetos</h2>
+      <div class="projetos-caixa">
+        <div class="projetos-card">
+          <img
+            src="./images/projeto01.png"
+            alt="Preview do Projeto 01"
+            class="projetos-imagem"
+          />
+          <div class="caixa-textos-projetos">
+            <h3 class="info-projetos">Formulário de Admissão Digital</h3>
+            <p class="paragrafo-projetos">
+              Formulário online criado para o RH, que gera um link temporário
+              para novos colaboradores preencherem seus dados e enviarem
+              documentos. Ao final, o sistema cadastra automaticamente o
+              colaborador no sistema interno e cria uma pasta na rede do RH com
+              todos os arquivos enviados.
+            </p>
+            <div class="tecnologias-usadas">
+              <i class="fab fa-html5" title="HTML5"></i>
+              <i class="fab fa-css3-alt" title="CSS3"></i>
+              <i class="fab fa-js" title="JavaScript"></i>
+            </div>
+            <div class="card-botoes">
+              <a href="#" target="_blank" class="btn-projeto">Ver Detalhes</a>
+              <a href="#" target="_blank" class="btn-projeto btn-github"
+                >GitHub <i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="projetos-card">
+          <img
+            src="./images/projeto02.png"
+            alt="Preview do Projeto 02"
+            class="projetos-imagem"
+          />
+          <div class="caixa-textos-projetos">
+            <h3 class="info-projetos">Sistema de Gestão de Ativos de TI</h3>
+            <p class="paragrafo-projetos">
+              Sistema desenvolvido para o controle eficiente do estoque de TI,
+              permitindo o registro, rastreamento e gerenciamento de
+              equipamentos como notebooks, fones, teclados e demais ativos da
+              empresa.
+            </p>
+            <div class="tecnologias-usadas">
+              <i class="fab fa-python" title="Python"></i>
+              <i class="fab fa-js" title="JavaScript"></i>
+              <i class="fab fa-css3-alt" title="CSS3"></i>
+            </div>
+            <div class="card-botoes">
+              <a href="#" target="_blank" class="btn-projeto">Ver Detalhes</a>
+              <a href="#" target="_blank" class="btn-projeto btn-github"
+                >GitHub <i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="projetos-card">
+          <img
+            src="./images/projeto03.png"
+            alt="Preview do Projeto 03"
+            class="projetos-imagem"
+          />
+          <div class="caixa-textos-projetos">
+            <h3 class="info-projetos">Sistema de Cotação</h3>
+            <p class="paragrafo-projetos">
+              Sistema criado para gerenciar cotações de compras, com
+              funcionalidades de cadastro de itens e fornecedores, envio
+              automático de orçamentos por e-mail e liberação de pagamento
+              também via e-mail.
+            </p>
+            <div class="tecnologias-usadas">
+              <i class="fab fa-html5" title="HTML5"></i>
+              <i class="fab fa-css3-alt" title="CSS3"></i>
+              <i class="fab fa-js" title="JavaScript"></i>
+              <i class="fab fa-node-js" title="Node.js (Exemplo)"></i>
+            </div>
+            <div class="card-botoes">
+              <a href="#" target="_blank" class="btn-projeto">Ver Detalhes</a>
+              <a href="#" target="_blank" class="btn-projeto btn-github"
+                >GitHub <i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contato">
+      <h2 class="titulo-contato">Entre em Contato</h2>
+      <p class="contato-descricao">
+        Ficarei feliz em responder suas dúvidas ou discutir novas oportunidades
+        de serviço!
+      </p>
+      <form class="formulario-contato" id="formulario">
+        <div class="grupo-form">
+          <label for="nome-contato">Seu Nome:</label>
+          <input
+            type="text"
+            id="nome-contato"
+            name="nome"
+            class="campo-form"
+            placeholder="Digite seu nome completo"
+            required
+          />
+        </div>
+        <div class="grupo-form">
+          <label for="mensagem-contato">Sua Mensagem:</label>
+          <textarea
+            id="mensagem-contato"
+            name="mensagem"
+            class="text-form"
+            placeholder="Escreva sua mensagem aqui..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="button" id="enviar-whatsapp" class="botao-form">
+          Enviar Mensagem via WhatsApp
+        </button>
+      </form>
+
+      <div class="contato-info">
+        <h3>Ou me encontre em:</h3>
+        <div class="sociais-icones">
+          <a
+            href="https://linkedin.com/in/seuperfil"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/seuperfil" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="mailto:contato.matheusphelipe2131@gmail.com"
+            title="Email Profissional"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://wa.me/5541987266526"
+            target="_blank"
+            title="WhatsApp para Contato Direto"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+        <p>Email: **contato.matheusphelipe2131@gmail.com**</p>
+        <p>WhatsApp: **(41) 98726-6526**</p>
+      </div>
+    </section>
+
+    <script src="./css/js/script.js"></script>
+  </body>
+</html>
