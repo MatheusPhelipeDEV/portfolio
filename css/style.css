@@ -250,7 +250,8 @@ h1 {
 /* Estilos Comuns para as Seções (Sobre, Projetos, Contato) */
 .sobre,
 .projetos,
-.contato {
+.contato,
+.artes-design-section {
   padding: 6rem 2rem; /* Espaçamento interno */
   border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha de camada sutil no topo */
   transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição para uso com 'is-visible' */
@@ -259,7 +260,8 @@ h1 {
 /* Classe 'is-visible' (para ser adicionada via JS para o Scroll Reveal) */
 .sobre.is-visible,
 .projetos.is-visible,
-.contato.is-visible {
+.contato.is-visible,
+.artes-design-section.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -267,7 +269,8 @@ h1 {
 /* Estilos dos Títulos das Seções */
 .sobre-titulo,
 .projetos-titulo,
-.titulo-contato {
+.titulo-contato,
+.artes-design-titulo {
   font-size: 3.5rem; /* Tamanho consistente para todos os títulos de seção */
   color: var(--claro); /* Cor padrão (fallback) */
   text-align: center;
@@ -471,6 +474,101 @@ h1 {
   color: var(--claro);
 }
 
+/* Estilos da Seção "Artes & Design" (Nova seção com carrossel) */
+.artes-design-section {
+  padding: 6rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden; /* Importante para que o carrossel não vaze */
+}
+
+.artes-design-titulo {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    var(--pastel-lightblue),
+    var(--pastel-lavender)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Estilos do Carrossel de Artes */
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+  cursor: grab;
+}
+
+.carousel-container:active {
+  cursor: grabbing;
+}
+
+.carousel-track {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 320px;
+  margin: 0 1rem;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+  transition: all 0.4s ease;
+}
+
+.carousel-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3),
+    0 0 10px var(--pastel-lightblue);
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Efeito de desfoque nas laterais do carrossel */
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--escuro), transparent);
+}
+
+.carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--escuro), transparent);
+}
+
 /* Estilos da Seção "Contato" */
 .contato {
   padding: 6rem 2rem;
@@ -630,7 +728,8 @@ h1 {
   }
   .sobre-titulo,
   .projetos-titulo,
-  .titulo-contato {
+  .titulo-contato,
+  .artes-design-titulo {
     font-size: 3rem;
   }
   .projetos-caixa {
@@ -638,6 +737,9 @@ h1 {
       auto-fit,
       minmax(280px, 1fr)
     ); /* Min-width para cards de projeto */
+  }
+  .carousel-item {
+    width: 280px;
   }
 }
 
@@ -682,12 +784,14 @@ h1 {
 
   .sobre,
   .projetos,
-  .contato {
+  .contato,
+  .artes-design-section {
     padding: 4rem 1rem;
   }
   .sobre-titulo,
   .projetos-titulo,
-  .titulo-contato {
+  .titulo-contato,
+  .artes-design-titulo {
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
@@ -743,5 +847,10 @@ h1 {
   }
   .sociais-icones a {
     font-size: 2rem;
+  }
+
+  /* Ajuste no carrossel para mobile */
+  .carousel-item {
+    width: 250px;
   }
 }
