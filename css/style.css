@@ -139,42 +139,6 @@ body {
   width: 100%; /* Underline aparece totalmente no hover */
 }
 
-/* Estilo para o Botão de Download do Currículo na Navbar (Removido do HTML, mas o estilo é mantido se reusado) */
-.btn-download-cv {
-  /* Este estilo não será aplicado, pois o elemento foi removido do HTML */
-  background: linear-gradient(
-    45deg,
-    var(--pastel-lightblue),
-    var(--pastel-mint)
-  ); /* Gradiente pastel */
-  color: var(--escuro); /* Texto escuro para contraste */
-  padding: 0.8rem 1.2rem;
-  border-radius: 25px; /* Mais arredondado, estilo pílula */
-  text-decoration: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin-left: 2.5rem; /* Destaca ele um pouco dos outros links */
-}
-
-.btn-download-cv:hover {
-  background: linear-gradient(
-    45deg,
-    var(--pastel-mint),
-    var(--pastel-lightblue)
-  ); /* Inverte o gradiente no hover */
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.btn-download-cv i {
-  color: var(--secondary-color); /* Cor do ícone, escuro para contraste */
-  font-size: 1rem; /* Tamanho do ícone */
-}
-
 /* Estilos da Seção de Cabeçalho (Hero Section) */
 .cabecalho {
   min-height: 100vh; /* Ocupa a altura total da viewport */
@@ -247,7 +211,7 @@ h1 {
   } /* Visível na metade da animação */
 }
 
-/* Estilos Comuns para as Seções (Sobre, Projetos, Contato) */
+/* Estilos Comuns para as Seções (Sobre, Projetos, Contato, Artes) */
 .sobre,
 .projetos,
 .contato,
@@ -432,46 +396,34 @@ h1 {
   color: var(--primary-color); /* Altera a cor */
 }
 
-/* Estilos dos Botões dentro dos Cards de Projeto */
-.card-botoes {
-  display: flex;
-  flex-wrap: wrap; /* Permite quebrar linha em mobile */
-  gap: 1rem; /* Espaçamento entre os botões */
-  justify-content: center;
-  margin-top: auto; /* Empurra os botões para a parte inferior do card flex */
-}
-
-.btn-projeto {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background: var(--primary-color);
-  color: var(--claro);
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  text-align: center;
-  flex: 1 1 auto; /* Permite que o botão ocupe espaço e cresça */
-  max-width: 180px; /* Limita largura */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-projeto:hover {
-  background: var(--pastel-lavender);
+/* Estilos do novo botão para abrir o modal */
+.btn-detalhes {
+  background: linear-gradient(
+    45deg,
+    var(--pastel-lightblue),
+    var(--pastel-mint)
+  );
   color: var(--escuro);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: auto; /* Empurra o botão para o final do card */
+}
+
+.btn-detalhes:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.btn-projeto.btn-github {
-  background: var(--secondary-color);
-  border: 1px solid var(--primary-color);
-}
-
-.btn-projeto.btn-github:hover {
-  background: var(--primary-color);
-  border-color: var(--pastel-lightblue);
-  color: var(--claro);
+  background: linear-gradient(
+    45deg,
+    var(--pastel-mint),
+    var(--pastel-lightblue)
+  );
 }
 
 /* Estilos da Seção "Artes & Design" (Nova seção com carrossel) */
@@ -708,17 +660,102 @@ h1 {
   color: rgba(226, 232, 240, 0.8);
 }
 
+/* --- ESTILOS DO MODAL (POP-UP) --- */
+
+/* Fundo escuro do modal, ocupa a tela toda */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fundo semi-transparente e escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Modal visível quando a classe .ativo for adicionada */
+.modal-overlay.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Container do conteúdo do modal */
+.modal-conteudo {
+  background: var(--secondary-color);
+  max-width: 90%;
+  max-height: 90%;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  overflow-y: auto; /* Permite rolagem dentro do modal se o conteúdo for grande */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.4s ease;
+}
+
+/* Animação para o modal aparecer */
+.modal-overlay.ativo .modal-conteudo {
+  transform: scale(1);
+}
+
+/* Botão de fechar (X) */
+.modal-fechar {
+  position: absolute;
+  top: 1.5rem; /* Aumentado para dar mais espaço */
+  right: 1.5rem; /* Aumentado para dar mais espaço */
+  font-size: 3rem; /* Aumentado para ser mais visível */
+  color: var(--pastel-rose);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 10; /* Garante que o botão fique acima do conteúdo */
+}
+
+.modal-fechar:hover {
+  color: var(--primary-color);
+}
+
+/* Título do projeto no modal */
+.modal-titulo {
+  font-size: 1.8rem; /* Fonte ajustada para ser um pouco menor */
+  color: var(--pastel-lightblue);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Galeria de imagens dentro do modal */
+.modal-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.modal-galeria img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--vidro);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+/* Efeito de zoom na imagem ao passar o mouse */
+.modal-galeria img:hover {
+  transform: scale(1.03);
+}
+
 /* --- Media Queries para Responsividade --- */
 
 /* Ajustes para Tablets (de 768px a 1024px) */
 @media (max-width: 1024px) {
   .menu {
-    gap: 1.5rem; /* Reduz espaço entre itens do menu */
-    justify-content: space-around; /* Distribui melhor em tablet */
-  }
-  .btn-download-cv {
-    /* Mantido para caso queira reintroduzir ou como referência */
-    margin-left: 0; /* Remove margem lateral extra para melhor encaixe */
+    gap: 1.5rem;
+    justify-content: space-around;
   }
   h1 {
     font-size: 3.5rem;
@@ -733,10 +770,7 @@ h1 {
     font-size: 3rem;
   }
   .projetos-caixa {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(280px, 1fr)
-    ); /* Min-width para cards de projeto */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   .carousel-item {
     width: 280px;
@@ -749,9 +783,9 @@ h1 {
     padding: 1rem 0.5rem;
   }
   .menu {
-    flex-direction: column; /* Empilha links verticalmente em mobile */
+    flex-direction: column;
     gap: 1rem;
-    align-items: center; /* Centraliza verticalmente os itens do menu */
+    align-items: center;
   }
   .menu-link {
     font-size: 0.9rem;
@@ -760,15 +794,6 @@ h1 {
   .menu-link i {
     font-size: 1.2rem;
   }
-  .btn-download-cv {
-    /* Mantido para caso queira reintroduzir ou como referência */
-    width: 80%; /* Ocupa mais largura em mobile */
-    margin-left: 0;
-    margin-top: 1rem; /* Espaçamento do link acima */
-    font-size: 0.9rem;
-    padding: 0.7rem 1rem;
-  }
-
   h1 {
     font-size: 2.8rem;
     margin: 15px 0 5px;
@@ -778,8 +803,8 @@ h1 {
     padding: 0 1rem;
   }
   .foto-perfil {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
   }
 
   .sobre,
@@ -810,13 +835,13 @@ h1 {
   }
 
   .projetos-caixa {
-    grid-template-columns: 1fr; /* Apenas 1 coluna no mobile */
+    grid-template-columns: 1fr;
   }
   .projetos-imagem {
     height: 180px;
   }
   .info-projetos {
-    font-size: 1.5rem;
+    font-size: 0.4rem;
   }
   .paragrafo-projetos {
     font-size: 0.95rem;
@@ -826,10 +851,6 @@ h1 {
   }
   .tecnologias-usadas i {
     font-size: 1.5rem;
-  }
-  .btn-projeto {
-    font-size: 0.9rem;
-    padding: 0.7rem 1rem;
   }
   .formulario-contato {
     padding: 1.5rem;
@@ -848,9 +869,25 @@ h1 {
   .sociais-icones a {
     font-size: 2rem;
   }
-
-  /* Ajuste no carrossel para mobile */
   .carousel-item {
     width: 250px;
+  }
+
+  /* Ajustes para o modal em mobile */
+  .modal-conteudo {
+    max-width: 95%;
+    padding: 1rem;
+  }
+  .modal-titulo {
+    font-size: 1.5rem;
+  }
+  .modal-galeria {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .modal-fechar {
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 2rem;
   }
 }

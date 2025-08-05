@@ -116,6 +116,9 @@
               <i class="fab fa-css3-alt" title="CSS3"></i>
               <i class="fab fa-js" title="JavaScript"></i>
             </div>
+            <button class="btn-detalhes" data-projeto-id="1">
+              Ver Detalhes
+            </button>
           </div>
         </div>
         <div class="projetos-card">
@@ -136,6 +139,9 @@
               <i class="fab fa-js" title="JavaScript"></i>
               <i class="fab fa-css3-alt" title="CSS3"></i>
             </div>
+            <button class="btn-detalhes" data-projeto-id="2">
+              Ver Detalhes
+            </button>
           </div>
         </div>
         <div class="projetos-card">
@@ -145,7 +151,7 @@
             class="projetos-imagem"
           />
           <div class="caixa-textos-projetos">
-            <h3 class="info-projetos">Sistema de Cotação</h3>
+            <h6 class="info-projetos">Sistema de Cotação</h6>
             <p class="paragrafo-projetos">
               Sistema criado para gerenciar cotações de compras, com
               funcionalidades de cadastro de itens e fornecedores e envio
@@ -157,6 +163,9 @@
               <i class="fab fa-js" title="JavaScript"></i>
               <i class="fab fa-node-js" title="Node.js (Exemplo)"></i>
             </div>
+            <button class="btn-detalhes" data-projeto-id="3">
+              Ver Detalhes
+            </button>
           </div>
         </div>
       </div>
@@ -190,6 +199,12 @@
             </div>
             <div class="carousel-item">
               <img src="./artes/arte8.jpg" alt="Projeto de Design 8" />
+            </div>
+            <div class="carousel-item">
+              <img src="./artes/arte9.jpg" alt="Projeto de Design 9" />
+            </div>
+            <div class="carousel-item">
+              <img src="./artes/arte10.jpg" alt="Projeto de Design 10" />
             </div>
           </div>
         </div>
@@ -265,6 +280,14 @@
         <p>WhatsApp: **(41) 98726-6526**</p>
       </div>
     </section>
+
+    <div id="modal-projeto" class="modal-overlay">
+      <div class="modal-conteudo">
+        <span class="modal-fechar">&times;</span>
+        <h3 id="modal-titulo" class="modal-titulo">Título do Projeto</h3>
+        <div id="modal-imagens" class="modal-galeria"></div>
+      </div>
+    </div>
 
     <script src="./css/js/script.js"></script>
   </body>
